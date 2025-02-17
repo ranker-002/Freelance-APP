@@ -1,0 +1,15 @@
+/* styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary-hsl: 215 100% 57%;
+  --surface-100: hsl(210 40% 98%);
+  --surface-200: hsl(214 32% 91%);
+  --text-primary: hsl(222 47% 11%);
+  --text-secondary: hsl(215 16% 47%);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: hsl(210 20% 98%);
+}

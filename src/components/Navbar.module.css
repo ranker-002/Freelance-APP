@@ -1,93 +1,193 @@
 /* components/Navbar.module.css */
+
+/* 💡 Conteneur principal de la Navbar */
 .navbar {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
+    width: 100%;
+    background: rgba(10, 10, 25, 0.95);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     z-index: 1000;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    padding: 1rem 0;
+    transition: all 0.3s ease-in-out;
   }
   
-  .navContent {
-    max-width: 1280px;
+  /* 💡 Conteneur interne de la navbar */
+  .navContainer {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 1rem 2rem;
+    padding: 0 2rem;
     display: flex;
     align-items: center;
-    gap: 2rem;
+    justify-content: space-between;
   }
   
+  /* 💡 Logo */
   .logo {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: hsl(210, 100%, 70%);
+    white-space: nowrap;
   }
   
-  .searchBar {
-    flex-grow: 1;
+  /* 💡 Barre de recherche */
+  .searchWrapper {
+    flex: 1;
     max-width: 600px;
     position: relative;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
   }
   
   .searchInput {
     width: 100%;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.5rem;
     border: none;
     border-radius: 50px;
-    background: rgba(245, 245, 245, 0.7);
-    backdrop-filter: blur(5px);
+    background: rgba(20, 20, 40, 0.8);
+    color: white;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s ease;
   }
   
   .searchInput:focus {
     outline: none;
-    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 3px hsl(210, 100%, 50%);
   }
   
-  .searchButton {
-    position: absolute;
-    right: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-  }
-  
-  .searchIcon {
-    width: 1.5rem;
-    height: 1.5rem;
-    fill: #64748b;
-  }
-  
-  .navLinks {
+  /* 💡 Actions utilisateur */
+  .navActions {
     display: flex;
-    gap: 1.5rem;
     align-items: center;
+    gap: 1rem;
   }
   
-  .navLink {
-    color: #475569;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-  }
-  
-  .navLink:hover {
-    background: rgba(241, 245, 249, 0.5);
-    color: #2563eb;
-  }
-  
-  .navLinkActive {
-    background: #2563eb;
-    color: white !important;
+  .newProjectButton {
+    background: linear-gradient(135deg, hsl(210, 100%, 50%), hsl(240, 100%, 50%));
+    color: white;
+    border: none;
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.3s;
   }
+  
+  .newProjectButton:hover {
+    filter: brightness(1.1);
+  }
+  
+  .userAvatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, hsl(210, 100%, 50%), hsl(240, 100%, 50%));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+  
+  /* 💡 Toggle Menu (mobile) */
+  .menuToggle {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* 💡 Menu caché par défaut */
+  .navLinks {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  /* RESPONSIVITÉ */
+  
+  /* 🖥 Mode Tablettes */
+  @media (max-width: 1024px) {
+    .navContainer {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  
+    .searchWrapper {
+      width: 100%;
+      max-width: none;
+    }
+  }
+  
+  /* 📱 Mode Mobile */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 0.8rem 0;
+    }
+  
+    .navContainer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+  
+    /* Affichage du menu burger */
+    .menuToggle {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+  
+    /* Caché par défaut, s'affiche avec `.showMenu` */
+    .navLinks {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      gap: 1rem;
+      background: rgba(10, 10, 25, 0.95);
+      padding: 1rem 0;
+      border-radius: 8px;
+    }
+  
+    /* Affichage du menu quand activé */
+    .showMenu {
+      display: flex;
+    }
+  
+    .searchWrapper {
+      min-width: 100%;
+    }
+  
+    .searchInput {
+      font-size: 0.9rem;
+    }
+  }
+  
+  /* 📱 Petits écrans */
+  @media (max-width: 480px) {
+    .logo {
+      font-size: 1.3rem;
+    }
+  
+    .searchInput {
+      font-size: 0.85rem;
+    }
+  
+    .newProjectButton {
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
+    }
+  
+    .userAvatar {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  

@@ -1,6 +1,6 @@
 /* components/ProjectsList.module.css */
 .container {
-  max-width: 1280px;
+  max-width: 1440px;
   margin: 2rem auto;
   padding: 0 2rem;
 }
@@ -8,116 +8,95 @@
 .header {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   margin-bottom: 2rem;
 }
 
 .title {
   font-size: 2rem;
   font-weight: 700;
-  color: #0f172a;
-  margin: 0;
+  color: hsl(210, 100%, 70%);
+  text-shadow: 0 0 20px hsla(210, 100%, 50%, 0.3);
 }
 
-.resultsCount {
-  color: #64748b;
-  font-size: 0.9rem;
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.sortSelect {
+  padding: 0.5rem 1rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  border-radius: 8px;
+  background: hsla(240, 33%, 10%, 0.8);
+  color: white;
+  font-size: 1rem;
 }
 
 .projectsGrid {
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
 .projectCard {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
+  background: hsla(240, 33%, 10%, 0.8);
   border-radius: 16px;
   padding: 1.5rem;
-  border: 1px solid rgba(241, 245, 249, 0.5);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid hsla(0, 0%, 100%, 0.1);
+  transition: transform 0s ease, box-shadow 0.1s ease;
 }
 
 .projectCard:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px hsla(210, 100%, 50%, 0.1);
 }
 
 .cardHeader {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.checkbox {
-  position: relative;
-  top: 3px;
-}
-
-.checkmark {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #cbd5e1;
-  border-radius: 5px;
-  transition: all 0.2s ease;
-}
-
-input:checked ~ .checkmark {
-  background: #2563eb;
-  border-color: #2563eb;
-}
-
-.headerContent {
-  flex-grow: 1;
+  margin-bottom: 1.5rem;
 }
 
 .projectTitle {
-  font-size: 1.25rem;
-  color: #0f172a;
-  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  color: white;
+  margin-bottom: 0.5rem;
 }
 
-.metaData {
+.metaInfo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  color: #64748b;
+  gap: 0.5rem;
+  color: hsl(0, 0%, 80%);
   font-size: 0.9rem;
-  flex-wrap: wrap;
 }
 
-.dotDivider {
-  width: 4px;
-  height: 4px;
-  background: #cbd5e1;
-  border-radius: 50%;
+.dotSeparator {
+  color: hsl(0, 0%, 50%);
 }
 
 .cardBody {
-  margin: 1.5rem 0;
+  margin-bottom: 1.5rem;
 }
 
 .description {
-  color: #475569;
+  color: hsl(0, 0%, 80%);
   line-height: 1.6;
-  margin: 0 0 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .skills {
   display: flex;
-  gap: 0.5rem;
   flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
-.skillPill {
-  background: rgba(241, 245, 249, 0.5);
-  color: #334155;
+.skillTag {
+  background: hsla(210, 100%, 50%, 0.1);
+  color: hsl(210, 100%, 70%);
   padding: 0.25rem 0.75rem;
   border-radius: 20px;
   font-size: 0.85rem;
-  backdrop-filter: blur(5px);
 }
 
 .cardFooter {
@@ -125,7 +104,7 @@ input:checked ~ .checkmark {
   justify-content: space-between;
   align-items: center;
   padding-top: 1rem;
-  border-top: 1px solid rgba(241, 245, 249, 0.8);
+  border-top: 1px solid hsla(0, 0%, 100%, 0.1);
 }
 
 .priceSection {
@@ -136,58 +115,57 @@ input:checked ~ .checkmark {
 .price {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #2563eb;
+  color: hsl(210, 100%, 70%);
 }
 
 .rateType {
-  color: #64748b;
+  color: hsl(0, 0%, 70%);
   font-size: 0.9rem;
 }
 
 .proposalButton {
-  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, hsl(210, 100%, 50%), hsl(240, 100%, 50%));
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  border-radius: 8px;
+  font-weight: 500;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: filter 0.1s ease;
 }
 
 .proposalButton:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  filter: brightness(1.1);
 }
 
-.arrowIcon {
-  width: 1.25rem;
-  height: 1.25rem;
-  fill: currentColor;
-}
-
+/* Responsivité */
 @media (max-width: 768px) {
-  .navContent {
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  .searchBar {
-    order: 3;
-    width: 100%;
-    max-width: none;
-  }
-  
-  .projectCard {
-    padding: 1rem;
-  }
-  
-  .cardFooter {
+  .header {
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .projectCard {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .projectTitle {
+    font-size: 1.2rem;
+  }
+
+  .proposalButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }

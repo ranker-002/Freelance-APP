@@ -1,36 +1,51 @@
 // components/Navbar.jsx
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <nav className={styles.navbar}>
-      <div className={styles.navContent}>
-        <div className={styles.logo}>
-          <span className={styles.logoAccent}>Free</span>io
-        </div>
+    <motion.nav 
+      className={styles.navbar}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
+      <div className={styles.navContainer}>
         
-        <div className={styles.searchBar}>
-          <input 
-            type="text" 
-            placeholder="Search projects..." 
-            className={styles.searchInput}
-          />
-          <button className={styles.searchButton}>
-            <svg className={styles.searchIcon} viewBox="0 0 24 24">
-              <path d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/>
-            </svg>
-          </button>
+        {/* Logo */}
+        <div className={styles.logo}>
+          Freeio
         </div>
 
-        <div className={styles.navLinks}>
-          <a href="#" className={styles.navLink}>Dashboard</a>
-          <a href="#" className={styles.navLink}>Projects</a>
-          <a href="#" className={styles.navLinkActive}>New Project</a>
+        {/* Bouton menu burger (visible sur mobile) */}
+        <button className={styles.menuToggle} onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+
+        {/* Contenu du menu */}
+        <div className={`${styles.navLinks} ${menuOpen ? styles.showMenu : ""}`}>
+          <div className={styles.searchWrapper}>
+            <input type="text" placeholder="Search projects..." className={styles.searchInput} />
+          </div>
+
+          <div className={styles.navActions}>
+            <motion.button 
+              className={styles.newProjectButton}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              + New Project
+            </motion.button>
+            <div className={styles.userAvatar}>JD</div>
+          </div>
         </div>
+
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
-export default Navbar
+export default Navbar;
